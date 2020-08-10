@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgb(245,245,245);
+}
+a{
+    text-decoration: none;
+}
+#login{
+    width: 450px;
+    height: 550px;
+    border: 1px solid #dadada;
+    margin: 80px auto;
+    background-image: url("img/login-bg.png");
+    box-shadow:0 0 30px 5px #dadada;
+    border-radius: 10px;
+}
+.title{
+    width: 100%;
+    height: 200px;
+    background-image: url("img1/logo.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.title>h4{
+    padding-top: 160px;
+    text-align: center;
+    color: #333;
+    font-weight: 400;
+    font-size: 20px;
+}
+.info{
+    position: relative;
+}
+.info>p{
+    width: 340px;
+    height: 40px;
+    margin: 30px auto;
+    position: relative;
+}
+.user-1{
+    display: inline-block;
+    width: 150px;
+    height: 25px;
+    line-height: 25px;
+    background-color: rgb(209,109,98);
+    color: white;
+    border-radius: 3px;
+    font-size: 12px;
+    position: absolute;
+    top: 13px;
+    right: 66px;
+    text-align: center;
+}
+.pwd-1{
+    display: inline-block;
+    width: 150px;
+    height: 25px;
+    line-height: 25px;
+    background-color: rgb(209,109,98);
+    color: white;
+    border-radius: 3px;
+    font-size: 12px;
+    position: absolute;
+    top: 81px;
+    right: 66px;
+    text-align: center;
+}
+.info>span{
+    display: none;
+}
+.info>p:nth-child(1)>span:nth-child(1){
+    display: block;
+    width: 50px;
+    height: 48px;
+    line-height: 49px;
+    border: 1px solid rgb(204,204,204);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: url("img1/info.png");
+    background-color: rgb(251,251,251);
+}
+.info>p:nth-child(2)>span:nth-child(1){
+    display: block;
+    width: 50px;
+    height: 48px;
+    line-height: 49px;
+    border: 1px solid rgb(204,204,204);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: url("img1/info.png");
+    background-position: -47px 0;
+    background-color: rgb(251,251,251);
+}
+#username{
+    display: block;
+    width: 340px;
+    height: 50px;
+    margin: 20px auto;
+    padding-left: 60px;
+    box-sizing: border-box;
+    /*border: 1px solid rgb(107,147,242);*/
+    border: 1px solid rgb(204,204,204);
+    border-radius: 5px;
+    outline: none;
+    color: #333;
+    font-size: 16px;
+    box-shadow:0 0 1px 1px #dadada inset;
+}
+#pwd{
+    display: block;
+    width: 340px;
+    height: 50px;
+    margin: 20px auto;
+    padding-left: 60px;
+    box-sizing: border-box;
+    border: 1px solid rgb(204,204,204);
+    border-radius: 5px;
+    outline: none;
+    color: #333;
+    font-size: 16px;
+    box-shadow:0 0 1px 1px #dadada inset;
+}
+.binding{
+    width: 340px;
+    height: 19px;
+    margin: 0 auto;
+    line-height: 19px;
+    color: rgb(153,153,153);
+    font-size: 12px;
+}
+.binding>a{
+    display: inline-block;
+    font-size: 12px;
+    color: rgb(80,121,217);
+    margin: 0 12px;
+}
+.binding>a:nth-child(2){
+    margin-left: 60px;
+}
+.auto{
+    display: inline-block;
+    padding-left: 25px;
+    background-image: url("img1/auto.png");
+    background-repeat: repeat-y;
+    /* background-repeat-X: no-repeat; 这句话会警示 */
+    background-position: 0 1px;
+    cursor: pointer;
+    font-size: 12px;
+    color: rgb(153,153,153);
+}
+#commit{
+    display: block;
+    width: 340px;
+    height: 50px;
+    margin: 20px auto;
+    border: 1px solid rgb(98,130,197);
+    border-radius: 8px;
+    color: white;
+    font-size: 20px;
+    background-color: rgb(96,137,211);
+    cursor: pointer;
+}
+.other a:hover{
+    color: rgb(84,143,204);
+}
+.other{
+    width: 340px;
+    margin: 20px auto;
+    height: 30px;
+    line-height: 30px;
+    border-top: 1px solid rgb(217,217,217);
+}
+.other p{
+    display: inline-block;
+    font-size: 12px;
+    line-height: 30px;
+    color: rgb(153,153,153);
+
+}
+.other p:nth-child(2){
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background-image: url("img1/other.png");
+    background-repeat: no-repeat;
+    background-position: 3px 16px;
+}
+.other p:nth-child(3){
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background-image: url("img1/other.png");
+    background-repeat: no-repeat;
+    background-position: -29px 15px;
+}
+.other p:nth-child(4){
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background-image: url("img1/other.png");
+    background-repeat: no-repeat;
+    background-position: -58px 15px;
+}
+.other p:nth-child(5){
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background-image: url("img1/other.png");
+    background-repeat: no-repeat;
+    background-position: -90px 15px;
+}
+.other a{
+    display: inline-block;
+    font-size: 12px;
+    color:rgb(153,153,153);
+    margin-left: 25px;
+}
+footer{
+    width: 450px;
+    margin: -40px auto;
+    font-size: 12px;
+    color: rgb(117,117,117);
+}
+footer span,footer a{
+    display: inline-block;
+    margin: 0 10px;
+    color: rgb(84,143,204);
+    padding-left: 10px;
+}
+footer span{
+    font-size: 12px;
+    color: rgb(117,117,117);
+}
+footer a:nth-child(4){
+    display: block;
+    width: 200px;
+    text-align: center;
+    margin: 10px auto;
+}
+</style>
+</head>
+<body>
+<div id="login">
+    <div class="title">
+        <h4>使用 Smartisan ID 登录官网</h4>
+    </div>
+    <form action="#" method="post">
+        <div class="info">
+            <p><span></span><input type="text" name="username" id="username" placeholder="手机号/邮箱"></p>
+            <p><span></span><input type="password" name="pwd" id="pwd" placeholder="密码"></p>
+            <span class="user-1"></span>
+            <span class="pwd-1"></span>
+        </div>
+        <div class="binding">
+            <div class="auto">自动登录</div>
+            <!-- <a href="registered.html">注册 Smartisan ID</a>| -->
+            <a href="#">注册 Smartisan ID</a>|
+            <a href="#">忘记密码？</a>
+        </div>
+        <input type="button" value="登录" id="commit">
+    </form>
+    <div class="other">
+        <p>其他账号登录:</p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <a href="#">国际手机号登录></a>
+    </div>
+</div>
+<footer>
+    <span>Copyright © 2019 smartisan.com 版权所有</span>|
+    <a href="#">法律声明</a>|
+    <a href="#">隐私条款</a>
+    <a href="#">京 ICP 备 18020659 号 - 2</a>
+</footer>
+</body>
+</html>
+<script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+<script >
+$(function(){
+    $(".auto").click(function(){
+        let i=parseInt($(this).css("backgroundPositionY"));
+        i=i+19;
+        console.log(i);
+        $(this).css({
+            backgroundPositionY:i
+        })
+    });
+
+});
+let regMail = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+let regName=/^1\d{10}$/;
+let flagUser=false;
+let flagPwd=false;
+let flagSever=false;
+$("#username").blur(function(){
+    let us=$("#username").val();
+    if(regName.test(us)==true){
+        $(".user-1").html("合法");
+        $(".user-1").show();
+        flagUser=true;
+    }else{
+        $(".user-1").html("手机号/邮箱格式错误");
+        $(".user-1").show();
+    }
+});
+$("#pwd").blur(function(){
+    let pwd=$("#pwd").val();
+    if (pwd.length>=6){
+        $(".pwd-1").hide();
+        flagPwd=true
+    }else{
+        $(".pwd-1").html("密码必须大于6位");
+        $(".pwd-1").show();
+    }
+});
+$("#commit").click(function(){
+    console.log(flagPwd );
+    let us=$("#username").val();
+    let pwd=$("#pwd").val();
+    if(flagPwd && flagUser){
+        $.post("login.php",{username:us,pwd:pwd},function(res,stat){
+            login(res);
+        });
+        function login(str){
+            if(str==0){
+                let ls=localStorage;
+                ls.setItem("user",us);
+                location.href = "index.html";
+            }else{
+                $(".user-1").html("账号/密码错误");
+                $(".user-1").show();
+            }
+        }
+    }
+});
+
+</script>
